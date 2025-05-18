@@ -1,9 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { toast } from 'react-toastify';
-import Icons from "../assets/Icons";
-import defautProfile from "../assets/defaultProfile.png";
+import { Link } from "react-router-dom";
+import Icons from "../../assets/Icons";
+import defautProfile from "../../assets/defaultProfile.png"
+
 
 const TopNavbar: React.FC = () => {
+
   const [darkMode, setDarkMode] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const profileRef = useRef<HTMLDivElement>(null);
@@ -30,30 +33,35 @@ const TopNavbar: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-between px-10 py-4 bg-white dark:bg-gray-800 shadow-lg">
-      <div className="text-xl font-bold">Miraiedge</div>
+    <div className="flex items-center justify-between px-10 py-4 bg-white dark:bg-gray-900 shadow-lg">
+      <Link to="/" className="text-4xl font-bold text-black dark:text-white">Miraiedge</Link>
 
       <div className="flex items-center gap-7">
         <div className="relative">
-          <button className="rounded-full p-2 bg-gray-200 dark:bg-gray-700">
-            <Icons.notificationIcon />
+          <button
+            onClick={() => handleRouteClick("Notifiction")}
+            className="rounded-full p-2 bg-gray-200 dark:bg-gray-700">
+            <Icons.notificationIcon className="text-black dark:text-white"/>
           </button>
         </div>
 
         <button className="rounded-full p-2 bg-gray-200 dark:bg-gray-700" onClick={toggleTheme}>
-          {darkMode ? <Icons.lightMoodIcon /> : <Icons.darkModeIcon />}
+          {darkMode ? 
+            <Icons.lightMoodIcon className="text-black dark:text-white"/> 
+            : <Icons.darkModeIcon className="text-black dark:text-white"/>
+          }
         </button>
 
         <div ref={profileRef} className="relative">
           <button onClick={() => setProfileOpen(!profileOpen)} className="flex items-center gap-2">
             <img src={defautProfile} alt="Profile" className="h-10 w-10 rounded-full" />
-            <span className="font-medium">John Doe</span>
+            <span className="font-medium text-gray-700 dark:text-white">John Doe</span>
           </button>
 
           {profileOpen && (
             <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-700 rounded-md shadow-lg p-2">
-              <button onClick={() => handleRouteClick("Profile")} className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Profile</button>
-              <button onClick={() => handleRouteClick("Logout")} className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Logout</button>
+              <button onClick={() => handleRouteClick("Profile")} className="w-full text-left px-4 py-2 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">Profile</button>
+              <button onClick={() => handleRouteClick("Logout")} className="w-full text-left px-4 py-2 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">Logout</button>
             </div>
           )}
         </div>

@@ -1,20 +1,19 @@
-import React, { useEffect } from 'react'
-import { toast } from 'react-toastify';
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
-
-import TopNavbar from './components/TopNavbar';
+import MainLayout from './layouts/MainLayout';
+import mainRoutes from './routes/MainRoutes';
 
 
 function App() {
 
-  useEffect(() => {
-    toast.success('Toaster Working fine')
-  }, [])
-
   return (
     <>
-    <TopNavbar />
-    <h1 className="text-3xl text-yellow-950 dark:text-yellow-400 font-bold underline">Hello world!</h1>
+      <Routes>
+        <Route path='/' element={<MainLayout />}>
+          {[...mainRoutes]}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
     </>
   );
 }
