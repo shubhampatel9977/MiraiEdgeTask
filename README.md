@@ -83,3 +83,9 @@ npm run preview
 
 The project is deployed and live on Netlify! You can check it out here:  
 [Live Demo on Netlify](https://miraiedgetask.netlify.app/)
+
+---
+
+## 🌐 Project Details PDF
+
+https://drive.google.com/file/d/1-yakLoO6D4IPr7WuNw20GJvj7MZXJ6Gd/view
